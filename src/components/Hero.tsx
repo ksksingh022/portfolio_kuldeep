@@ -78,16 +78,53 @@ const Hero: React.FC = () => {
               </motion.button>
             </Link>
           </div>
-          <p className="mt-3 text-sm text-gray-500">
-            Tip: add your photo as <code>/public/profile.jpg</code> for a personalized look.
-          </p>
         </motion.div>
 
+
+
         <motion.div
+  initial={{ opacity: 0, y: 8 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5, ease: 'easeOut' }}
+  className="flex justify-center md:justify-end"
+>
+  <div className="relative group">
+    {/* Ambient glow (hidden until hover) */}
+    <div
+      className="absolute -inset-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      style={{
+        background:
+          'radial-gradient(60% 60% at 50% 50%, rgba(99,102,241,0.18), rgba(139,92,246,0.10) 40%, rgba(0,0,0,0) 70%)'
+      }}
+    />
+
+    {/* Image container for border + mask */}
+    <div className="relative rounded-lg overflow-hidden ring-1 ring-white/15 bg-neutral-900/30 backdrop-blur-[1px]">
+      <img
+        ref={imgRef}
+        src="/profile.jpg"
+        onError={handleImgError}
+        alt="Kuldeep Singh"
+        className="block w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover"
+      />
+    </div>
+
+    {/* Subtle overlay gradient (adds polish, no gimmicks) */}
+    <div className="pointer-events-none absolute inset-0 rounded-lg bg-gradient-to-b from-white/0 via-white/0 to-white/5 mix-blend-normal" />
+
+    {/* Hover shadow only */}
+    <div className="absolute inset-0 rounded-lg transition-shadow duration-300 group-hover:shadow-[0_12px_40px_rgba(0,0,0,0.35)]" />
+  </div>
+</motion.div>
+
+
+
+
+        {/* <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          whileHover={{ rotate: -1 }}
+          // whileHover={{ rotate: -1 }}
           className="flex justify-center md:justify-end"
         >
           <div className="relative">
@@ -102,7 +139,7 @@ const Hero: React.FC = () => {
             <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-white/30" />
             <div className="pointer-events-none absolute -inset-2 rounded-full bg-gradient-to-br from-blue-500/10 to-violet-500/10" />
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );
