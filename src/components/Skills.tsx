@@ -71,9 +71,10 @@ const Skills: React.FC = () => {
             return (
               <div
                 key={name}
-                className="flex flex-col items-center justify-center rounded-md border bg-white px-3 py-5 min-w-0 shadow-sm hover:shadow transition-shadow"
+                className="group relative overflow-hidden flex flex-col items-center justify-center rounded-md border bg-white px-3 py-5 min-w-0 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
               >
-                <span className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-blue-50 text-blue-600">
+                <span className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-blue-500 via-violet-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <span className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-blue-50 text-blue-600 transition-transform duration-200 ease-out group-hover:scale-110 group-hover:rotate-1">
                   {React.createElement(Comp, { size: 28 } as any)}
                 </span>
                 <span className="mt-2 text-center text-sm font-medium text-gray-800 leading-snug break-words whitespace-normal">
